@@ -70,7 +70,7 @@
             android:layout_height="30dp"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/home" />
+            android:src="@drawable/home" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -91,7 +91,8 @@
             android:layout_height="82dp"
             android:layout_row="0"
             android:layout_column="0"
-            app:srcCompat="@drawable/mole" />
+            android:src="@drawable/mole"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView2"
@@ -99,7 +100,8 @@
             android:layout_height="82dp"
             android:layout_row="0"
             android:layout_column="1"
-            app:srcCompat="@drawable/mole" />
+            android:src="@drawable/mole"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView3"
@@ -107,7 +109,8 @@
             android:layout_height="82dp"
             android:layout_row="0"
             android:layout_column="2"
-            app:srcCompat="@drawable/mole" />
+            android:src="@drawable/mole"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -115,8 +118,9 @@
             android:layout_height="82dp"
             android:layout_row="1"
             android:layout_column="0"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="120dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="120dp"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView5"
@@ -124,8 +128,9 @@
             android:layout_height="82dp"
             android:layout_row="1"
             android:layout_column="1"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="120dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="120dp"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView6"
@@ -133,8 +138,9 @@
             android:layout_height="82dp"
             android:layout_row="1"
             android:layout_column="2"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="120dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="120dp"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/imageView7"
@@ -142,8 +148,9 @@
             android:layout_height="82dp"
             android:layout_row="2"
             android:layout_column="0"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="90dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="90dp"
+            android:clickable="true"/>
 
 
         <ImageView
@@ -152,8 +159,9 @@
             android:layout_height="82dp"
             android:layout_row="2"
             android:layout_column="1"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="90dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="90dp"
+            android:clickable="true"/>
 
 
 
@@ -163,8 +171,9 @@
             android:layout_height="82dp"
             android:layout_row="2"
             android:layout_column="2"
-            app:srcCompat="@drawable/mole"
-            android:layout_marginTop="90dp"/>
+            android:src="@drawable/mole"
+            android:layout_marginTop="90dp"
+            android:clickable="true"/>
 
 
 
