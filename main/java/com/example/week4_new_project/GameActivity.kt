@@ -32,12 +32,13 @@ class GameActivity : AppCompatActivity() {
     var index = random.nextInt(8 - 0)
     var score : Int = 0
 
-    ///////////////////////////////////////
 
 
     var imageArray = ArrayList<ImageView>()
-    var handler : Handler = Handler()
+    var handler : Handler = Handler(Looper.getMainLooper())
     var runnable : Runnable = Runnable{ }
+
+    val thread = Thread(runnable)
 
     var total = 0
     var started = false
@@ -85,6 +86,8 @@ class GameActivity : AppCompatActivity() {
                     binding.timerText.text = "Time: " + p0 / 1000
                 }
             }.start()
+
+            thread.start()
         }
 
 
@@ -114,7 +117,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun increaseScore(view: View) {
-        score++
+        score+=5
 
         binding.scoreTv.text = "Score: " + score
     }

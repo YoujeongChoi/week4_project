@@ -40,6 +40,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        if (intent.hasExtra("user_name")) {
+            val user_name = binding.startUserName
+            user_name.text = intent.getStringExtra("user_name")
+            username = user_name.toString()
+        } else {
+            username = "No Name"
+        }
+
     }
 
     override fun onRestart() {
