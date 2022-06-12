@@ -9,6 +9,8 @@ import android.view.VelocityTracker
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.MotionEventCompat
 import com.example.week4_new_project.databinding.ActivityGameBinding
 import java.util.*
@@ -19,12 +21,14 @@ import kotlin.concurrent.timerTask
 
 
 
+
 class GameActivity : AppCompatActivity() {
     val TAG: String = "로그"
 
     private lateinit var mBinding: ActivityGameBinding
     private val binding get() = mBinding!!
 
+    private lateinit var mDetector: GestureDetectorCompat
 
 
     var gametime = 100
@@ -55,8 +59,12 @@ class GameActivity : AppCompatActivity() {
 
         score = 0
 
+
+
         imageArray = arrayListOf(binding.imageView, binding.imageView2, binding.imageView3, binding.imageView4,
             binding.imageView5, binding.imageView6, binding.imageView7, binding.imageView8, binding.imageView9)
+
+
 
 
         binding.homeIb.setOnClickListener {
@@ -74,6 +82,7 @@ class GameActivity : AppCompatActivity() {
 
             Log.d(TAG, "버튼클릭")
             thread.start()
+            binding.startIb.visibility =  View.INVISIBLE
 
             hideImages()
 
@@ -84,13 +93,12 @@ class GameActivity : AppCompatActivity() {
                     handler.removeCallbacks(runnable)
                     for (image in imageArray)
                         image.visibility = View.INVISIBLE
+                    binding.startIb.visibility =  View.VISIBLE
                 }
                 override fun onTick(p0: Long) {
                     binding.timerText.text = "Time: " + p0 / 1000
                 }
             }.start()
-
-
 
 
         }
@@ -103,6 +111,7 @@ class GameActivity : AppCompatActivity() {
             
             override fun run() {
                 Log.d(TAG, "GameActivity - run() called")
+
                 for (image in imageArray) {
                     image.visibility = View.INVISIBLE
                 }
@@ -111,32 +120,29 @@ class GameActivity : AppCompatActivity() {
                 val index = random.nextInt(8 - 0)
                 imageArray[index].visibility = View.VISIBLE
 
-                handler.postDelayed(runnable, 500)
+                for (image in imageArray) {
+                    image.setOnClickListener {
+                        if(image == imageArray[index]) {
+                            Log.d(TAG, "맞게클릭 ")
+                            image.setImageResource(R.drawable.hit_mole)
+                            handler.postDelayed(runnable, 500)
+                            score+=5
+                            binding.scoreTv.text = "Score: $score"
+                        } else {
+                            Log.d(TAG, "잘못클릭")
+                            handler.postDelayed(runnable, 500)
+                        }
+                    }
+                    imageArray[index].setImageResource(R.drawable.mole)
+                }
+
+
+                handler.postDelayed(runnable, 5000)
             }
         }
         handler.post(runnable)
     }
 
-    fun increaseScore(view: View) {
-
-
-        score+=5
-
-        binding.scoreTv.text = "Score: " + score
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-
-        val action: Int = MotionEventCompat.getActionMasked(event)
-
-        return when (action) {
-            MotionEvent.ACTION_DOWN -> {
-                Log.d(TAG, "GameActivity - onTouchEvent() called")
-                true
-            }
-            else -> super.onTouchEvent(event)
-        }
-
-    }
 
 }
+
